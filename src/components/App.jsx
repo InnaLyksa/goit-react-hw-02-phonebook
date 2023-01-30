@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { ContactList } from 'components';
+import { nanoid } from 'nanoid';
+import { ContactList, ContactForm } from 'components';
 import { Container, SectionHeader } from './App.styled';
 
 export class App extends Component {
@@ -18,12 +19,35 @@ export class App extends Component {
     }));
   };
 
+  addContact = (newName, newNumber) => {
+    // console.log(newName, newNumber);
+    const newContact = {
+      id: nanoid(),
+      name: newName,
+      number: newNumber,
+    };
+
+    const { name } = newContact;
+
+    this.checkedDublicateContact(name)
+      ? alert(`${name} is already in contacts`)
+      : this.setState(({ contacts }) => ({
+          contacts: [newContact, ...contacts],
+        }));
+  };
+
+  checkedDublicateContact = validatedName =>
+    this.state.contacts.find(
+      contact => contact.name.toLowerCase() === validatedName.toLowerCase()
+    );
+
   render() {
-    const { contacts } = this.state;
+    const { state, addContact, deleteContact } = this;
     return (
       <Container>
+        <ContactForm onSubmit={addContact} />
         <SectionHeader>Contacts</SectionHeader>
-        <ContactList contacts={contacts} deleteContact={this.deleteContact} />
+        <ContactList contacts={state.contacts} deleteContact={deleteContact} />
       </Container>
     );
   }
