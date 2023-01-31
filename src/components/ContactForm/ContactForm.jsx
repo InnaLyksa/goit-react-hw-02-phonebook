@@ -55,7 +55,9 @@ export class ContactForm extends Component {
           onChange={this.handelInputChange}
         />
 
-        <LabelContactForm htmlFor={this._numberInputId}>Phone</LabelContactForm>
+        <LabelContactForm htmlFor={this._numberInputId}>
+          Number
+        </LabelContactForm>
         <InputContactForm
           id={this._numberInputId}
           type="tel"
