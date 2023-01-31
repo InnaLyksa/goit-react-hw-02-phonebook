@@ -16,11 +16,11 @@ export const LabelContactForm = styled.label`
 export const InputContactForm = styled.input`
   width: 300px;
   padding: 8px;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 24px;
+  margin-bottom: 10px;
   border-radius: 4px;
   border: 2px solid green;
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgb(23 24 23 / 20%);
 `;
 
 export const ButtonSubmit = styled.button`
@@ -30,5 +30,6 @@ export const ButtonSubmit = styled.button`
   background: #79ed7a;
   border: 1px solid;
   border-radius: 4px;
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgb(23 24 23 / 20%);
+  cursor: pointer;
 `;
