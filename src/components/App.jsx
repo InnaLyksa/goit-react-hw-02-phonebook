@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactList, ContactForm } from 'components';
-import { Container, SectionHeader } from './App.styled';
+import { Container, SectionHeader, PageHeader } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -45,6 +45,7 @@ export class App extends Component {
     const { state, addContact, deleteContact } = this;
     return (
       <Container>
+        <PageHeader>Phonebook</PageHeader>
         <ContactForm onSubmit={addContact} />
         <SectionHeader>Contacts</SectionHeader>
         <ContactList contacts={state.contacts} deleteContact={deleteContact} />
