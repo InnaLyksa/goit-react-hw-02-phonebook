@@ -22,26 +22,37 @@ export class App extends Component {
       number: newNumber,
     };
 
-    const { name } = newContact;
+    // const { name } = newContact;
 
-    this.checkedDublicateContact(name)
-      ? alert(`${name}  is already in contacts`)
-      : this.setState(({ contacts }) => ({
-          contacts: [newContact, ...contacts],
-        }));
+    // this.checkedDublicateName(name)
+    //   ? alert(`${name}  is already in contacts`)
+    //   : this.setState(({ contacts }) => ({
+    //       contacts: [newContact, ...contacts],
+    //     }));
 
-    // const { name, number } = newContact;
+    const { name, number } = newContact;
 
-    // this.checkedDublicateContact(name) || this.checkedDublicateNumber(number)
+    if (this.checkedDublicateName(name)) {
+      alert(`${name}  is already in contacts`);
+    } else if (this.checkedDublicateNumber(number)) {
+      alert(` ${number} is already in contacts`);
+    } else {
+      this.setState(({ contacts }) => ({
+        contacts: [newContact, ...contacts],
+      }));
+    }
+
+    // this.checkedDublicateName(name) || this.checkedDublicateNumber(number)
     //   ? alert(`${name} or ${number} is already in contacts`)
     //   : this.setState(({ contacts }) => ({
     //       contacts: [newContact, ...contacts],
     //     }));
   };
-  // checkedDublicateNumber = dublicateNumber =>
-  //   this.state.contacts.find(contact => contact.number === dublicateNumber);
 
-  checkedDublicateContact = dublicateName =>
+  checkedDublicateNumber = dublicateNumber =>
+    this.state.contacts.find(contact => contact.number === dublicateNumber);
+
+  checkedDublicateName = dublicateName =>
     this.state.contacts.find(
       contact => contact.name.toLowerCase() === dublicateName.toLowerCase()
     );
